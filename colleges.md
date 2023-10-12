@@ -1,6 +1,6 @@
 ---
 permalink: /colleges
-title: Plans
+title: Colleges
 ---
 
 <html lang="en">
