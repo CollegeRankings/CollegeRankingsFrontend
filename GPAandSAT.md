@@ -1,10 +1,6 @@
 ---
-comments: true
-layout: post
-title: GPA and SAT
-description: Ticket
-type: tangibles
-courses: { compsci: {week: 5} }
+permalink: /colleges/<college.name>
+title: <college.name>
 ---
 <!DOCTYPE html>
 <html lang="en">
