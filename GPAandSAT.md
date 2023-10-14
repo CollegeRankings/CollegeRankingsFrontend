@@ -1,8 +1,8 @@
 ---
-permalink: /colleges/<college.name>
-title: <college.name>
+permalink: /GPAandSATrecomendation
+title: GPA and SAT Recomendation
 ---
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -81,24 +81,11 @@ title: <college.name>
     <div id="message">Generating a fit college for you</div>
     <div id="question"></div>
     <script>
-        // Function to show the message and generate a random question
         function showFitCollegeMessage() {
-            const gpa = document.getElementById('gpa').value;
-            const sat = document.getElementById('sat').value;
-            const message = document.getElementById('message');
-            const question = document.getElementById('question');
-            if (gpa && sat) {
-                message.style.display = 'block';
-                // Generate a random question
-                const questions = [
-                    'What\'s your preferred major?',
-                    'Do you have a specific location in mind?',
-                    'Are you interested in extracurricular activities?',
-                    'Tell us about your career goals.'
-                ];
-                const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-                question.textContent = randomQuestion;
-            }
+            // Get the message element
+            var messageElement = document.getElementById('message');
+            // Display the message element
+            messageElement.style.display = 'block';
         }
     </script>
 </body>
