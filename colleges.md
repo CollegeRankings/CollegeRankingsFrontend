@@ -116,12 +116,14 @@ title: Colleges
             const detailsButtons = document.querySelectorAll('.view-details-btn');
             detailsButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
+                    const collegeId = e.target.getAttribute('data-college-id');
                     let baseUrl;
                     if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
                         baseUrl = "/colleges/";
                     } else {
                         baseUrl = "https://collegerankings.github.io/CollegeRankingsFrontend/colleges/";
                     }
+                    console.log('${baseUrl}college_details?id=${collegeId}')
                     location.href = `${baseUrl}college_details?id=${collegeId}`;
                 });
             });
