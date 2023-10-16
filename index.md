@@ -104,12 +104,25 @@ title: College Rankings
                             <h5 class="card-title">${college.name}</h5>
                             <p class="card-text">Location: ${college.city}, ${college.state}</p>
                             <p class="card-text">Ranking: ${college.ranking || 'Not Available'}</p>
-                            <a href="/colleges/college_details?id=${college.id}" class="btn btn-primary view-details-btn">View Details</a>
+                            <a href="${getCollegeDetailsLink(college.id)}" class="btn btn-primary view-details-btn">View Details</a>
                         </div>
                     </div>
                 `;
                 collegeList.appendChild(collegeCard);
             });
+
+        function getCollegeDetailsLink(collegeId) {
+            let baseUrl;
+
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                baseUrl = "/colleges/";
+            } else {
+                baseUrl = "https://collegerankings.github.io/CollegeRankingsFrontend/colleges/";
+            }
+
+            return `${baseUrl}college_details?id=${collegeId}`;
+        }
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
