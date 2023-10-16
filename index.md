@@ -65,22 +65,54 @@ title: College Rankings
 </section>
 
 <!-- Top Colleges Section -->
+
 <section class="top-colleges container">
     <h2 class="text-center">Top Ranked Colleges</h2>
     <div class="row" id="college-list"></div> <!-- This is where we'll display the college information -->
     <div class="text-center mt-4">
-        <a href="/colleges" class="btn btn-primary btn-lg font-weight-bold">View More Colleges</a>
+        <a href="#" class="btn btn-primary btn-lg font-weight-bold" id="viewMoreColleges">View More Colleges</a>
     </div>
 </section>
+
+<script>
+    // Function to get the correct link for "View More Colleges" based on the hostname
+    function getCollegesLink() {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            return "/colleges";
+        } else {
+            return "https://collegerankings.github.io/CollegeRankingsFrontend/colleges";
+        }
+    }
+
+    // Update the "View More Colleges" link dynamically
+    const viewMoreCollegesLink = document.getElementById('viewMoreColleges');
+    viewMoreCollegesLink.href = getCollegesLink();
+</script>
 
 <!-- Personalized Recommendations Section -->
 <section class="recommendations container">
     <h2 class="text-center">Get Personalized Recommendations</h2>
     <p class="text-center">Answer a few questions and get college recommendations tailored just for you</p>
-    <div class="text-center">
-        <a href="/GPAandSATrecommendation" class="btn btn-primary btn-lg font-weight-bold">Get Started</a>
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary btn-lg font-weight-bold" id="getStartedButton">Get Started</a>
     </div>
 </section>
+
+<script>
+    // Function to get the correct link for "Get Started" based on the hostname
+    function getGetStartedLink() {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            return "/GPAandSATrecommendation";
+        } else {
+            return "https://collegerankings.github.io/CollegeRankingsFrontend/GPAandSATrecommendation";
+        }
+    }
+
+    // Update the "Get Started" link dynamically
+    const getStartedButton = document.getElementById('getStartedButton');
+    getStartedButton.href = getGetStartedLink();
+</script>
+
 
 <script>
     // Function to fetch and display college information
