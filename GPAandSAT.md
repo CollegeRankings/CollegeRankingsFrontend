@@ -1,6 +1,6 @@
 ---
-permalink: /GPAandSATrecomendation
-title: GPA and SAT Recomendation
+permalink: /GPAandSATrecommendation
+title: GPA and SAT Recommendation
 ---
 
 <html lang="en">

@@ -20,17 +20,40 @@ title: College Details
             margin: 20px;
             padding: 20px;
             border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
         }
         p {
             color: #666;
+            margin-bottom: 5px;
         }
         img {
-            width: 100%;
+            width: 60%; /* Decreased image width to 60% of its parent container */
             height: auto;
             margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Additional Styles */
+        .college-details {
+            margin-top: 20px;
+        }
+        .college-details p {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .college-details strong {
+            color: #333;
         }
     </style>
 </head>
@@ -55,21 +78,23 @@ title: College Details
                         <p><strong>State:</strong> ${college.state}</p>
                         <p><strong>City:</strong> ${college.city}</p>
                         <p><strong>Zip Code:</strong> ${college.zip}</p>
-                        <p><strong>Type:</strong> ${college.type}</p>
-                        <p><strong>Ranking:</strong> ${college.ranking}</p>
-                        <p><strong>ACT Average:</strong> ${college.ACTAvg}</p>
-                        <p><strong>Aid Percentage:</strong> ${college.aidpercent}%</p>
-                        <p><strong>Acceptance Rate:</strong> ${college.acceptance}%</p>
-                        <p><strong>Fees:</strong> $${college.fees}</p>
-                        <p><strong>GPA Average:</strong> ${college.GPAAvg}</p>
-                        <p><strong>Enrollment:</strong> ${college.enrollment}</p>
-                        <p><strong>SAT Average:</strong> ${college.SATAvg}</p>
-                        <p><strong>SAT Range:</strong> ${college.SATRange}</p>
-                        <p><strong>ACT Range:</strong> ${college.ACTRange}</p>
-                        <p><strong>Year Founded:</strong> ${college.YearFounded}</p>
-                        <p><strong>Academic Calendar:</strong> ${college.AcademicCalendar}</p>
-                        <p><strong>Setting:</strong> ${college.setting}</p>
-                        <p><strong>School Website:</strong> <a href="${college.SchoolWebsite}" target="_blank">Visit Website</a></p>
+                        <div class="college-details">
+                            <p><strong>Type:</strong> ${college.type}</p>
+                            <p><strong>Ranking:</strong> ${college.ranking}</p>
+                            <p><strong>ACT Average:</strong> ${college.ACTAvg}</p>
+                            <p><strong>Aid Percentage:</strong> ${college.aidpercent}%</p>
+                            <p><strong>Acceptance Rate:</strong> ${college.acceptance}%</p>
+                            <p><strong>Fees:</strong> $${college.fees}</p>
+                            <p><strong>GPA Average:</strong> ${college.GPAAvg}</p>
+                            <p><strong>Enrollment:</strong> ${college.enrollment}</p>
+                            <p><strong>SAT Average:</strong> ${college.SATAvg}</p>
+                            <p><strong>SAT Range:</strong> ${college.SATRange}</p>
+                            <p><strong>ACT Range:</strong> ${college.ACTRange}</p>
+                            <p><strong>Year Founded:</strong> ${college.YearFounded}</p>
+                            <p><strong>Academic Calendar:</strong> ${college.AcademicCalendar}</p>
+                            <p><strong>Setting:</strong> ${college.setting}</p>
+                            <p><strong>School Website:</strong> <a href="${college.SchoolWebsite}" target="_blank">Visit Website</a></p>
+                        </div>
                     `;
                 } catch (error) {
                     console.error('Error fetching data:', error);
