@@ -102,9 +102,9 @@ title: College Rankings
     // Function to get the correct link for "Get Started" based on the hostname
     function getGetStartedLink() {
         if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            return "/GPAandSATrecommendation";
+            return "/collegerecommendation";
         } else {
-            return "https://collegerankings.github.io/CollegeRankingsFrontend/GPAandSATrecommendation";
+            return "https://collegerankings.github.io/CollegeRankingsFrontend/collegerecommendation";
         }
     }
 
