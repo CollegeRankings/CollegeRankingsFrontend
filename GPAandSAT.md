@@ -141,9 +141,14 @@ title: College Recommendation
     </div>
     <script>
         document.getElementById('submit').addEventListener('click', function () {
-            const gpa = document.getElementById('gpa').value;
-            const sat = document.getElementById('sat').value;
+            const gpa = parseFloat(document.getElementById('gpa').value);
+            const sat = parseInt(document.getElementById('sat').value);
             const collegesContainer = document.getElementById('colleges');
+            // Validate GPA and SAT score
+            if (isNaN(gpa) || isNaN(sat) || gpa < 0 || gpa > 4 || sat < 0 || sat > 1600) {
+                alert("Please enter valid GPA (between 0 and 4) and SAT score (between 0 and 1600).");
+                return;
+            }
             collegesContainer.innerHTML = '';
             console.log(`https://collegerankings.stu.nighthawkcodingsociety.com/api/college/mlrecommendation?gpa=${gpa}&sat=${sat}`);
             fetch(`https://collegerankings.stu.nighthawkcodingsociety.com/api/college/mlrecommendation?gpa=${gpa}&sat=${sat}`)
@@ -175,7 +180,7 @@ title: College Recommendation
                                 } else {
                                     baseUrl = "https://collegerankings.github.io/CollegeRankingsFrontend/colleges/";
                                 }
-                                console.log('${baseUrl}college_details?id=${collegeId}')
+                                console.log(`${baseUrl}college_details?id=${collegeId}`)
                                 location.href = `${baseUrl}college_details?id=${collegeId}`;
                             });
                         });
@@ -186,7 +191,5 @@ title: College Recommendation
                 });
         });
     </script>
-
 </body>
-
 </html>
