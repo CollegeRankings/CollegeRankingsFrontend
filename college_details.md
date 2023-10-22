@@ -4,11 +4,13 @@ title: College Details
 ---
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Info</title>
     <style>
+        /* Your existing styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f8f8;
@@ -57,6 +59,7 @@ title: College Details
         }
     </style>
 </head>
+
 <body>
     <div class="college-info" id="college-info">
         <!-- College information will be inserted here dynamically using JavaScript -->
@@ -65,7 +68,6 @@ title: College Details
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const collegeId = urlParams.get('id');
-            console.log(collegeId)
             const collegeInfoContainer = document.getElementById('college-info');
             async function fetchCollegeInfo() {
                 try {
@@ -80,7 +82,7 @@ title: College Details
                         <p><strong>Zip Code:</strong> ${college.zip}</p>
                         <div class="college-details">
                             <p><strong>Type:</strong> ${college.type}</p>
-                            <p><strong>Ranking:</strong> ${college.ranking}</p>
+                            <p><strong>Ranking:</strong> <span id="rankingValue">${college.ranking}</span> <button id="toggleBinaryBtn" class="btn btn-secondary">Show Ranking as Binary</button></p>
                             <p><strong>ACT Average:</strong> ${college.ACTAvg}</p>
                             <p><strong>Aid Percentage:</strong> ${college.aidpercent}%</p>
                             <p><strong>Acceptance Rate:</strong> ${college.acceptance}%</p>
@@ -96,6 +98,15 @@ title: College Details
                             <p><strong>School Website:</strong> <a href="${college.SchoolWebsite}" target="_blank">Visit Website</a></p>
                         </div>
                     `;
+                    // Add click event handler for the "Toggle Binary" button
+                    const rankingValue = document.getElementById('rankingValue');
+                    const toggleBinaryBtn = document.getElementById('toggleBinaryBtn');
+                    toggleBinaryBtn.addEventListener('click', () => {
+                        // Convert the ranking to binary
+                        const binaryRank = (parseInt(college.ranking) || 0).toString(2);
+                        // Display both the actual ranking and the binary ranking together
+                        rankingValue.textContent = `${college.ranking} (Binary: ${binaryRank})`;
+                    });
                 } catch (error) {
                     console.error('Error fetching data:', error);
                     collegeInfoContainer.innerHTML = '<p>Error loading college information.</p>';
@@ -105,4 +116,5 @@ title: College Details
         });
     </script>
 </body>
+
 </html>
