@@ -8,11 +8,10 @@ title: AI Bot
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>AI College Bot</title>
     <style>
         .chatbot-container {
-            max-width: 100%;
-            width: 500px;
+            width: 80vw; /* Set width to 80% of the viewport width */
             margin: 50px auto;
             background-color: #fff;
             border: 1px solid #e1e1e1;
@@ -74,12 +73,22 @@ title: AI Bot
             from {opacity: 0;}
             to {opacity: 1;}
         }
-
+        .user-message {
+            text-align: right; /* Align user's message to the right */
+        }
+        .user-text {
+            background-color: dodgerblue; /* Set background color to dodgerblue */
+            color: #fff; /* Set text color to white */
+            border-radius: 20px;
+            padding: 10px 15px;
+            display: inline-block;
+            max-width: 80%;
+        }
     </style>
 </head>
 <body>
     <div class="chatbot-container">
-        <div id="header">Chatbot</div>
+        <div id="header">AI College Bot</div>
         <div id="conversation">
             <!-- Chat messages will appear here -->
         </div>
@@ -89,37 +98,43 @@ title: AI Bot
         </form>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const conversation = document.getElementById("conversation");
-            const inputField = document.getElementById("input-field");
-            const submitButton = document.getElementById("submit-button");
-            submitButton.addEventListener("click", function (e) {
-                e.preventDefault();
-                const userQuestion = inputField.value.trim();
-                if (!userQuestion) return; // Don't send empty questions
-                const accessCode = prompt("Please enter your access code:");
-                if (!accessCode) return; // Don't proceed without access code
-                // Send the user's question to the API
-                console.log(encodeURIComponent(userQuestion))
-                console.log(accessCode)
-                fetch(`https://collegerankings.stu.nighthawkcodingsociety.com/api/college/openai?question=${encodeURIComponent(userQuestion)}&code=${accessCode}`, {method: 'GET', mode: 'cors', }).then((response) => response.json()).then((data) => {
-                        // Display the answer in the conversation div
-                        const chatbotMessage = document.createElement("div");
-                        chatbotMessage.classList.add("chatbot-message");
-                        const chatbotText = document.createElement("div");
-                        chatbotText.classList.add("chatbot-text");
-                        chatbotText.textContent = data.answer;
-                        chatbotMessage.appendChild(chatbotText);
-                        conversation.appendChild(chatbotMessage);
-                        // Clear the input field
-                        inputField.value = "";
-                        inputField.focus();
-                    })
-                    .catch((error) => {
-                        console.error("Error fetching data from the API:", error);
-                    });
-            });
+    document.addEventListener("DOMContentLoaded", function () {
+        const conversation = document.getElementById("conversation");
+        const inputField = document.getElementById("input-field");
+        const submitButton = document.getElementById("submit-button");
+        submitButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            const userQuestion = inputField.value.trim();
+            if (!userQuestion) return; // Don't send empty questions
+            const accessCode = prompt("Please enter your access code:");
+            if (!accessCode) return; // Don't proceed without access code
+            // Display the user's prompt in a different style and position
+            const userMessage = document.createElement("div");
+            userMessage.classList.add("user-message"); // New class for user messages
+            const userText = document.createElement("div");
+            userText.classList.add("user-text"); // New class for user text
+            userText.textContent = userQuestion;
+            userMessage.appendChild(userText);
+            conversation.appendChild(userMessage);
+            // Send the user's question to the API
+            fetch(`https://collegerankings.stu.nighthawkcodingsociety.com/api/college/openai?question=${encodeURIComponent(userQuestion)}&code=${accessCode}`, {method: 'GET', mode: 'cors'}).then((response) => response.json()).then((data) => {
+                    // Display the chatbot's response
+                    const chatbotMessage = document.createElement("div");
+                    chatbotMessage.classList.add("chatbot-message");
+                    const chatbotText = document.createElement("div");
+                    chatbotText.classList.add("chatbot-text");
+                    chatbotText.textContent = data;
+                    chatbotMessage.appendChild(chatbotText);
+                    conversation.appendChild(chatbotMessage);
+                    conversation.scrollTop = conversation.scrollHeight;
+                    inputField.value = "";
+                    inputField.focus();
+                })
+                .catch((error) => {
+                    console.error("Error fetching data from the API:", error);
+                });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
