@@ -20,25 +20,25 @@
             transition: text-shadow 0.3s;
         }
         label[for="gpa"]:hover, label[for="sat"]:hover {
-            text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4); 
+            text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
         }
         input[type="number"] {
             padding: 10px;
             margin: 5px 0;
             border: 2px solid #ccc;
             border-radius: 5px;
-            transition: border 0.3s, transform 0.3s; 
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1); 
+            transition: border 0.3s, transform 0.3s;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
         }
         input[type="number"]:focus {
             border: 2px solid dodgerblue;
-            transform: scale(1.05); 
+            transform: scale(1.05);
         }
         #message {
             margin-top: 10px;
             font-weight: bold;
             display: none;
-            animation: fadeIn 2s ease-in-out; 
+            animation: fadeIn 2s ease-in-out;
         }
         button {
             display: block;
@@ -76,6 +76,7 @@
     <button onclick="showFitCollegeMessage()">Submit</button>
     <div id="message">Generating a fit college for you</div>
     <div id="question"></div>
+    <button onclick="generateRandomQuestion()">Generate Random Question</button>
     <script>
         function showFitCollegeMessage() {
             const gpa = document.getElementById('gpa').value;
@@ -88,16 +89,32 @@
                     'What\'s your preferred major?',
                     'Do you have a specific location in mind?',
                     'Are you interested in extracurricular activities?',
-                    'Tell us about your career goals.'
-                    'Favorite extracurricular activity?'
-                    'What club do you partake in?'
-                    'How do approach hard tests?'
-                    'Name your favorite all time subject.'
+                    'Tell us about your career goals.',
+                    'Favorite extracurricular activity?',
+                    'What club do you partake in?',
+                    'How do you approach hard tests?',
+                    'Name your favorite all-time subject.'
                 ];
                 const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
                 question.textContent = randomQuestion;
             }
         }
+        function generateRandomQuestion() {
+            const question = document.getElementById('question');
+            const questions = [
+                'What\'s your preferred major?',
+                'Do you have a specific location in mind?',
+                'Are you interested in extracurricular activities?',
+                'Tell us about your career goals.',
+                'Favorite extracurricular activity?',
+                'What club do you partake in?',
+                'How do you approach hard tests?',
+                'Name your favorite all-time subject.'
+            ];
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            question.textContent = randomQuestion;
+        }
     </script>
 </body>
 </html>
+
